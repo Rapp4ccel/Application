@@ -118,9 +118,6 @@ public final class FormService extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Tidcustomer = new javax.swing.JTextField();
-        Bcari = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TBservice = new javax.swing.JTable();
         Bsave = new javax.swing.JButton();
         Breset = new javax.swing.JButton();
         Bkeluar = new javax.swing.JButton();
@@ -135,7 +132,6 @@ public final class FormService extends javax.swing.JFrame {
         Tnama = new javax.swing.JTextField();
         Tnorangka = new javax.swing.JTextField();
         Ttipe = new javax.swing.JTextField();
-        Bcari1 = new javax.swing.JButton();
         DTtgl = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,31 +157,6 @@ public final class FormService extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Tidcustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 140, -1));
-
-        Bcari.setText("Cari");
-        Bcari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BcariActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 60, -1));
-
-        TBservice.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        TBservice.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TBserviceMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(TBservice);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 810, 280));
 
         Bsave.setText("Simpan");
         Bsave.addActionListener(new java.awt.event.ActionListener() {
@@ -261,14 +232,6 @@ public final class FormService extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Ttipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 210, -1));
-
-        Bcari1.setText("Cari");
-        Bcari1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Bcari1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Bcari1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 60, -1));
         getContentPane().add(DTtgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 140, -1));
 
         pack();
@@ -277,35 +240,6 @@ public final class FormService extends javax.swing.JFrame {
     private void TidcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TidcustomerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TidcustomerActionPerformed
-
-    private void BcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcariActionPerformed
-        try {
-            st = cn.createStatement();
-            rs = st.executeQuery("SELECT * FROM motor where no_plat ='"+
-                Tnoplat.getText()+"'");
-            while (rs.next()){
-                Tnorangka.setText(rs.getString(2));
-                Ttipe.setText(rs.getString(3));
-
-                JOptionPane.showMessageDialog(rootPane, "Ini Datanya Berdasarkan ID Customer = '"+Tidcustomer.getText()+"' ");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "eror"+e);
-        }
-    }//GEN-LAST:event_BcariActionPerformed
-
-    private void TBserviceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBserviceMouseClicked
-        try {
-            Tnofaktur.setText(tabModel.getValueAt(TBservice.getSelectedRow(), 0).toString());
-            Tidcustomer.setText(tabModel.getValueAt(TBservice.getSelectedRow(), 1).toString());
-            Tbiaya.setText(tabModel.getValueAt(TBservice.getSelectedRow(), 2).toString());
-            Bsave.setEnabled(false);
-            Tnofaktur.setEnabled(false);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_TBserviceMouseClicked
 
     private void BsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsaveActionPerformed
         if (Tnofaktur.getText().isEmpty() || Tidcustomer.getText().isEmpty() || Tbiaya.getText().isEmpty()) {
@@ -364,22 +298,6 @@ public final class FormService extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TtipeActionPerformed
 
-    private void Bcari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bcari1ActionPerformed
-        try {
-            st = cn.createStatement();
-            rs = st.executeQuery("SELECT * FROM customer where id_customer ='"+
-                Tidcustomer.getText()+"'");
-            while (rs.next()){
-                Tnama.setText(rs.getString(2));
-
-                
-                JOptionPane.showMessageDialog(rootPane, "Ini Datanya Berdasarkan ID Customer = '"+Tidcustomer.getText()+"' ");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "eror"+e);
-        }
-    }//GEN-LAST:event_Bcari1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -416,13 +334,10 @@ public final class FormService extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Bcari;
-    private javax.swing.JButton Bcari1;
     private javax.swing.JButton Bkeluar;
     private javax.swing.JButton Breset;
     private javax.swing.JButton Bsave;
     private javax.swing.JTextField DTtgl;
-    private javax.swing.JTable TBservice;
     private javax.swing.JTextField Tbiaya;
     private javax.swing.JTextField Tidcustomer;
     private javax.swing.JTextField Tnama;
@@ -439,6 +354,5 @@ public final class FormService extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
